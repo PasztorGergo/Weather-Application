@@ -1,7 +1,7 @@
 export interface Forecast {
   forecastday: forecastday[];
 }
-interface forecastday {
+export interface forecastday {
   date: string;
   date_epoch: number;
   day: Day;

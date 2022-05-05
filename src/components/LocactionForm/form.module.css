@@ -1,0 +1,12 @@
+.form {
+  @apply flex flex-col justify-around items-center w-full h-32;
+}
+.button {
+  @apply bg-sky-600 cursor-pointer border-none outline-none uppercase font-medium px-4 py-2 rounded-lg text-white;
+}
+.button:active {
+  @apply bg-sky-700;
+}
+.input {
+  @apply outline-none border-[1px] border-solid border-gray-300 px-3 py-1 rounded-lg;
+}

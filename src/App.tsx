@@ -1,16 +1,22 @@
 import React from "react";
-import { WeatherCard } from "./components";
+import { LocationForm, UserInfo, WeatherCard } from "./components";
 import { useWeather } from "./hooks/WeatherProvider";
-import Weather from "./models/Weather";
 
 function App() {
-  const weather: Weather = useWeather();
+  const { weatherObject, setLoaction } = useWeather();
   return (
-    <div className="cardContainer">
-      {weather?.forecast.forecastday.map(({ day }, i) => (
-        <WeatherCard key={i} day={day} />
-      ))}
-    </div>
+    <>
+      <UserInfo
+        location={weatherObject?.location}
+        current={weatherObject?.current}
+      />
+      <div className="cardContainer">
+        {weatherObject?.forecast.forecastday.map((data: any, i: any) => (
+          <WeatherCard key={i} data={data} />
+        ))}
+      </div>
+      <LocationForm handleInput={setLoaction} />
+    </>
   );
 }
 

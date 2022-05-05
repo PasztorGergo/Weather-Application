@@ -1,9 +1,28 @@
 .card {
-  @apply rounded-lg text-slate-800 bg-blue-300 px-8 py-1 flex flex-col justify-around items-center transition-all text-center;
+  @apply border-zinc-300 shadow border-solid border-[1px] rounded-lg cursor-pointer w-full md:w-auto flex-grow md:flex-grow-0 text-slate-800 bg-white px-16 py-1 flex flex-col justify-around items-center transition-all text-center;
 }
 .card:hover {
-  @apply rounded-sm bg-sky-300;
+  @apply rounded-sm bg-zinc-50 shadow-md;
 }
-.info {
-  @apply font-medium;
+.icon {
+  @apply transition;
+}
+.day {
+  @apply font-medium text-xl;
+}
+.minTemp,
+.maxTemp {
+  @apply rounded-full flex justify-center items-center text-white font-medium w-16 h-16;
+}
+.minTemp {
+  @apply bg-sky-600 mt-2;
+}
+.maxTemp {
+  @apply bg-rose-600;
+}
+.temperature {
+  @apply flex flex-col justify-between;
+}
+.rainChance p {
+  @apply flex items-center justify-around text-sky-600;
 }

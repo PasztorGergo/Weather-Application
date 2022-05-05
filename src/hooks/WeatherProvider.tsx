@@ -1,4 +1,11 @@
-import React, { useContext, useEffect, useState, createContext } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  createContext,
+  useCallback,
+} from "react";
+import toast from "react-hot-toast";
 import Weather from "../models/Weather";
 
 const weatherContext = createContext<any>({});
@@ -12,20 +19,33 @@ export function WeatherProvider({ children }: any) {
   const [location, setLoaction] = useState<string>("Budapest");
   const [loading, setLoading] = useState(true);
 
-  const request = async (loc: string): Promise<Weather> => {
+  const request = async (loc: string): Promise<Weather | any> => {
     const weatherReq = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=baeb8614fe84472ebb942836220505&q=${loc}&days=3`
     );
-    const res = await weatherReq.json();
-    return res;
+    if (weatherReq.redirected) {
+      return new Error("Wrong location or tz-id!");
+    }
+    return await weatherReq.json();
   };
 
   useEffect(() => {
-    request(location).then((data) => setWeatherObject(data));
-    setLoading(false);
+    request(location)
+      .then((data) => {
+        if (!data.error) {
+          setWeatherObject(data as Weather);
+          toast.success("Loaction has been changed!");
+        } else {
+          toast.error("Wrong location or tz-id!");
+        }
+      })
+      .finally(() => setLoading(false));
+
+    return () => {};
   }, [location]);
+  const value = { weatherObject, setLoaction };
   return (
-    <weatherContext.Provider value={weatherObject}>
+    <weatherContext.Provider value={value}>
       {!loading && children}
     </weatherContext.Provider>
   );
