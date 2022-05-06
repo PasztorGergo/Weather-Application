@@ -1,0 +1,3 @@
+.hourDisplay {
+  @apply flex flex-wrap rounded-lg text-gray-900 w-full justify-center;
+}

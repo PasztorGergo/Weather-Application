@@ -33,7 +33,7 @@ interface Astro {
 }
 export interface Hour {
   time_epoch: number;
-  time: number;
+  time: string;
   temp_c: number;
   temp_f: number;
   is_day: boolean;
