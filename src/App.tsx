@@ -13,7 +13,7 @@ function App() {
       <UserInfo data={weatherObject} />
       <div className="cardContainer">
         {weatherObject?.forecast.forecastday.map((data: any, i: any) => (
-          <WeatherCard key={i} data={data} />
+          <WeatherCard key={i} idx={i} data={data} />
         ))}
       </div>
       <LocationForm handleInput={setLoaction} />

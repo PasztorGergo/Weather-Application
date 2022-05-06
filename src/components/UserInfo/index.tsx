@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { useWeather } from "../../hooks/WeatherProvider";
 import { Current } from "../../models/Current";
 import { Forecast } from "../../models/Forecast";
 import { Location } from "../../models/Location";
@@ -7,6 +8,7 @@ import { HourlyWeather } from "../HourlyWeather";
 import Styles from "./info.module.css";
 
 export function UserInfo({ data }: { data: Weather }) {
+  const { dayIndex } = useWeather();
   const {
     location,
     current,
@@ -28,7 +30,7 @@ export function UserInfo({ data }: { data: Weather }) {
         <img src={current.condition.icon} alt={current.condition.text} />
         <p>{current.temp_c}°C</p>
       </div>
-      <HourlyWeather forecast={forecast.forecastday[0]} />
+      <HourlyWeather forecast={forecast} />
     </div>
   );
 }

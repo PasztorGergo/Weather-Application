@@ -6,7 +6,10 @@ import Styles from "./card.module.css";
 export default function HourlyCard({ hour }: { hour: Hour }) {
   return (
     <div className={Styles.Card}>
-      <h5>{new Date(hour.time).getHours().toString().padStart(2, "0")}:00</h5>
+      <div className={Styles.CardHeader}>
+        <h5>{new Date(hour.time).getHours().toString().padStart(2, "0")}:00</h5>
+        <img src={hour.condition.icon} alt={hour.condition.text} />
+      </div>
       <div className="CardBody">
         {hour.chance_of_rain > 0 && (
           <div aria-details="chance of rain" className={Styles.rainChance}>

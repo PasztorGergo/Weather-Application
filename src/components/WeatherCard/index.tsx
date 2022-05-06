@@ -2,10 +2,21 @@ import React, { useMemo } from "react";
 import { forecastday } from "../../models/Forecast";
 import Styles from "./card.module.css";
 import { WiRaindrop } from "react-icons/wi";
+import { useWeather } from "../../hooks/WeatherProvider";
 
-export function WeatherCard({ data }: { data: forecastday }) {
+export function WeatherCard({ data, idx }: { data: forecastday; idx: number }) {
+  const { setDayIndex } = useWeather();
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setDayIndex(idx);
+  };
   return (
-    <div className={Styles.card}>
+    <div
+      className={Styles.card}
+      onClick={(e) => {
+        handleClick(e);
+      }}
+    >
       <h4 className={Styles.day}>
         {new Date(data.date).toString().split(" ")[0]}
       </h4>

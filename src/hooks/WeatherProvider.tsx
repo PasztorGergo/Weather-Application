@@ -18,6 +18,7 @@ export function WeatherProvider({ children }: any) {
   const [weatherObject, setWeatherObject] = useState<Weather>();
   const [location, setLoaction] = useState<string>("Budapest");
   const [loading, setLoading] = useState(true);
+  const [dayIndex, setDayIndex] = useState(0);
 
   const request = async (loc: string): Promise<Weather | any> => {
     const weatherReq = await fetch(
@@ -43,7 +44,7 @@ export function WeatherProvider({ children }: any) {
 
     return () => {};
   }, [location]);
-  const value = { weatherObject, setLoaction };
+  const value = { weatherObject, setLoaction, dayIndex, setDayIndex };
   return (
     <weatherContext.Provider value={value}>
       {!loading && children}

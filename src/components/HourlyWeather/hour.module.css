@@ -1,3 +1,9 @@
 .hourDisplay {
-  @apply flex flex-wrap rounded-lg text-gray-900 w-full justify-center;
+  @apply flex overflow-x-scroll rounded-lg text-gray-900 w-full;
+}
+.hourDisplay::-webkit-scrollbar {
+  @apply bg-sky-600 h-3 rounded-br-lg rounded-bl-lg;
+}
+.hourDisplay::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 bg-opacity-30 rounded-lg border-sky-600 border-[3px] border-solid;
 }
