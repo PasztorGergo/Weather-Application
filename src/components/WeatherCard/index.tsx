@@ -21,7 +21,7 @@ export function WeatherCard({ data, idx }: { data: forecastday; idx: number }) {
         {new Date(data.date).toString().split(" ")[0]}
       </h4>
       <div className={Styles.cardHeader}>
-        <img src={data.day.condition.icon} alt="" />
+        {getWeatherIcon(data.day.condition.code, true)}
       </div>
       <div className={Styles.cardBody}>
         <div className={Styles.temperature}>
