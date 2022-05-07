@@ -28,7 +28,7 @@ export function UserInfo({ data }: { data: Weather }) {
       </h3>
       <div className={Styles.current}>
         <img src={current.condition.icon} alt={current.condition.text} />
-        <p>{current.temp_c}°C</p>
+        <p>{Math.round(current.temp_c)}°C</p>
       </div>
       <HourlyWeather forecast={forecast} />
     </div>
