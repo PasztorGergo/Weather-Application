@@ -4,3 +4,6 @@
 .rainChance {
   @apply text-sky-700 flex flex-col items-center justify-center;
 }
+.CardHeader {
+  @apply flex flex-col items-center justify-around gap-y-3;
+}

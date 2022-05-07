@@ -8,7 +8,7 @@ import { HourlyWeather } from "../HourlyWeather";
 import Styles from "./info.module.css";
 
 export function UserInfo({ data }: { data: Weather }) {
-  const { dayIndex } = useWeather();
+  const { dayIndex, getWeatherIcon } = useWeather();
   const {
     location,
     current,
@@ -27,7 +27,7 @@ export function UserInfo({ data }: { data: Weather }) {
         {location?.name}, {location?.country}
       </h3>
       <div className={Styles.current}>
-        <img src={current.condition.icon} alt={current.condition.text} />
+        {getWeatherIcon(current.condition.code, current.is_day)}
         <p>{Math.round(current.temp_c)}°C</p>
       </div>
       <HourlyWeather forecast={forecast} />

@@ -5,7 +5,7 @@ import { WiRaindrop } from "react-icons/wi";
 import { useWeather } from "../../hooks/WeatherProvider";
 
 export function WeatherCard({ data, idx }: { data: forecastday; idx: number }) {
-  const { setDayIndex } = useWeather();
+  const { setDayIndex, getWeatherIcon } = useWeather();
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setDayIndex(idx);
@@ -21,11 +21,7 @@ export function WeatherCard({ data, idx }: { data: forecastday; idx: number }) {
         {new Date(data.date).toString().split(" ")[0]}
       </h4>
       <div className={Styles.cardHeader}>
-        <img
-          src={data.day.condition.icon}
-          alt={data.day.condition.text}
-          className={Styles.icon}
-        />
+        <img src={data.day.condition.icon} alt="" />
       </div>
       <div className={Styles.cardBody}>
         <div className={Styles.temperature}>
